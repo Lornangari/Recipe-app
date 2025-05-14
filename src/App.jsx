@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import Wishlist from './pages/Wishlist';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import RecipeDetail from './pages/RecipeDetail';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
       </Routes>
       <Footer />
     </Router>
