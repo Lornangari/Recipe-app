@@ -2,10 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { db } from '../firebase'; // Ensure this points to your Firebase setup
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { useAuth } from '../context/AuthContext';
 
 const Recipes = () => {
   const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState([]);
+  const { user } = useAuth();
 
   const searchRecipes = async () => {
     const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
@@ -15,6 +19,31 @@ const Recipes = () => {
   useEffect(() => {
     searchRecipes(); // Load default recipes
   }, []);
+
+  const handleAddToWishlist = async (recipe) => {
+    if (!user) {
+      alert('You must be logged in to add to wishlist.');
+      return;
+    }
+
+    const wishlistRef = doc(db, 'wishlists', user.uid);
+    const docSnap = await getDoc(wishlistRef);
+    let wishlist = [];
+
+    if (docSnap.exists()) {
+      wishlist = docSnap.data().items || [];
+      const alreadyExists = wishlist.find(item => item.idMeal === recipe.idMeal);
+      if (alreadyExists) {
+        alert('Already in wishlist!');
+        return;
+      }
+    }
+
+    wishlist.push(recipe);
+
+    await setDoc(wishlistRef, { items: wishlist });
+    alert('Added to wishlist!');
+  };
 
   return (
     <div className="p-6">
@@ -38,7 +67,12 @@ const Recipes = () => {
               <img src={recipe.strMealThumb} alt={recipe.strMeal} className="w-full h-48 object-cover rounded" />
               <h3 className="mt-2 font-bold">{recipe.strMeal}</h3>
             </Link>
-            <button  className="mt-2 px-4 py-1 bg-green-600 text-white rounded hover:bg-green-500"> Add to Wishlist</button>
+            <button
+              onClick={() => handleAddToWishlist(recipe)}
+              className="mt-2 px-4 py-1 bg-green-600 text-white rounded hover:bg-green-500"
+            >
+              Add to Wishlist
+            </button>
           </div>
         ))}
       </div>

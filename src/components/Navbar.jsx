@@ -11,8 +11,10 @@ const Navbar = () => {
         <li><Link to="/recipes">Recipes</Link></li>
       </ul>
       <div className="flex gap-4 items-center">
-        <Link to="/profile">👤</Link>
-        <Link to="/wishlist">💖</Link>
+        <Link to="/login" className="text-black hover:underline">Login</Link>
+        <Link to="/signup" className="text-black hover:underline">Sign Up</Link>
+        <Link to="/profile"><i class="fa-solid fa-user"></i></Link>
+        <Link to="/wishlist"><i class="fa-solid fa-heart"></i></Link>
       </div>
     </nav>
   );
