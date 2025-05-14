@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
 import Recipes from './pages/Recipes';
 import Profile from './pages/Profile';
@@ -10,8 +12,10 @@ import RecipeDetail from './pages/RecipeDetail';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
+
 function App() {
   return (
+    <>
     <Router>
       <Navbar />
       <Routes>
@@ -26,6 +30,19 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+
+          <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+      />
+      </>
+
   );
 }
 

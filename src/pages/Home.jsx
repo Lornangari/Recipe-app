@@ -1,15 +1,23 @@
 import { useState } from 'react';
 import heroImg from '../assets/hero.jpg';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate(); // ← NEW
 
   const handleSearch = (e) => {
     e.preventDefault();
-    
-    console.log('Searching for:', searchTerm);
+
+    if (searchTerm.trim() !== '') {
+      navigate(`/recipes?q=${encodeURIComponent(searchTerm.trim())}`);
+    }
   };
+
+  
+
 
   
 
