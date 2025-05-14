@@ -9,7 +9,7 @@ A modern and responsive Recipe App built using ReactJS, HTML, CSS, and JavaScrip
 -  Home page with categories and popular recipes
 -  Search functionality for recipes by name or ingredient
 -  Detailed recipe view with ingredients, instructions, and image
--  Save to Favorites using `localStorage`
+-  Save to Favorites using `firestore`
 -  Light and Dark mode toggle
 -  Responsive design for mobile and desktop
 -  Fetching data from a public recipe API
@@ -36,7 +36,7 @@ recipe-app/
 - HTML5 & CSS
 - JavaScript
 - Tailwind CSS 
-- localStorage for state persistence
+- firebase for state persistence
 - Fetch API / Axios
 
 ## How to Run the Project
