@@ -1,48 +1,38 @@
+// src/pages/RecipeDetails/index.jsx
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const dummyRecipes = [
-  {
-    id: 1,
-    title: 'Spaghetti Carbonara',
-    image: '/placeholder1.jpg',
-    ingredients: ['Pasta', 'Eggs', 'Cheese', 'Bacon'],
-    instructions: 'Boil pasta, mix eggs and cheese, combine with bacon.',
-  },
-  {
-    id: 2,
-    title: 'Chicken Stir Fry',
-    image: '/placeholder2.jpg',
-    ingredients: ['Chicken', 'Vegetables', 'Soy Sauce'],
-    instructions: 'Cook chicken, stir in veggies, add sauce.',
-  },
-];
-
-const RecipeDetail = () => {
+const RecipeDetails = () => {
   const { id } = useParams();
-  const recipe = dummyRecipes.find((r) => r.id === parseInt(id));
+  const [recipe, setRecipe] = useState(null);
 
-  if (!recipe) return <p className="text-center mt-10">Recipe not found.</p>;
+  useEffect(() => {
+    async function fetchDetails() {
+      const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+      setRecipe(res.data.meals[0]);
+    }
+    fetchDetails();
+  }, [id]);
+
+  if (!recipe) return <p className="p-4">Loading...</p>;
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <img
-        src={recipe.image}
-        alt={recipe.title}
-        className="w-full h-64 object-cover rounded-xl mb-6"
-      />
-      <h2 className="text-3xl font-bold mb-4">{recipe.title}</h2>
-
-      <h3 className="text-xl font-semibold mb-2">Ingredients:</h3>
-      <ul className="list-disc list-inside mb-4">
-        {recipe.ingredients.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
+      <h1 className="text-3xl font-bold mb-4">{recipe.strMeal}</h1>
+      <img src={recipe.strMealThumb} alt={recipe.strMeal} className="rounded-lg w-full mb-4" />
+      <h2 className="text-xl font-semibold">Ingredients:</h2>
+      <ul className="list-disc ml-6 mb-4">
+        {Array.from({ length: 20 }, (_, i) => {
+          const ingredient = recipe[`strIngredient${i + 1}`];
+          const measure = recipe[`strMeasure${i + 1}`];
+          return ingredient ? <li key={i}>{`${ingredient} - ${measure}`}</li> : null;
+        })}
       </ul>
-
-      <h3 className="text-xl font-semibold mb-2">Instructions:</h3>
-      <p>{recipe.instructions}</p>
+      <h2 className="text-xl font-semibold">Instructions:</h2>
+      <p className="mt-2 whitespace-pre-wrap">{recipe.strInstructions}</p>
     </div>
   );
 };
 
-export default RecipeDetail;
+export default RecipeDetails;
