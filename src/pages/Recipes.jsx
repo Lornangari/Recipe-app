@@ -96,7 +96,7 @@ const Recipes = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 ">
       {/* Search Bar */}
       <form onSubmit={handleSearch} className="flex justify-center mb-4">
         <input
@@ -106,7 +106,7 @@ const Recipes = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="submit" className="ml-2 px-4 py-2 bg-green-600 text-white rounded">
+        <button type="submit" className="ml-2 px-4 py-2 bg-slate-700 text-white rounded">
           Search
         </button>
       </form>
@@ -149,7 +149,7 @@ const Recipes = () => {
               </Link>
               <button
                 onClick={() => handleAddToWishlist(recipe)}
-                className="mt-2 px-4 py-1 bg-green-600 text-white rounded hover:bg-green-500"
+                className="mt-2 px-4 py-1 bg-slate-900 text-white rounded hover:bg-green-500"
               >
                 Add to Wishlist
               </button>

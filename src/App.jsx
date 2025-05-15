@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import RecipeDetail from './pages/RecipeDetail';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import EditProfile from './pages/EditProfile';
+import CommunityRecipes from './pages/CommunityRecipes';
 
 
 function App() {
@@ -25,7 +27,11 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} /> 
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/community" element={<CommunityRecipes />} />
+
+ 
 
       </Routes>
       <Footer />
