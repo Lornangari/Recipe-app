@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const CommunityRecipes = () => {
   const { user } = useAuth();
@@ -69,52 +70,59 @@ const CommunityRecipes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 py-10 px-4 max-w-4xl mx-auto">
+    <div className="min-h-screen bg-white text-slate-800 py-10 px-4 max-w-4xl mx-auto">
       <h1 className="text-4xl font-bold mb-4 text-center text-slate-800">🍽️ Community Recipes</h1>
-      <p className="text-center text-lg text-slate-600 mb-8">
-        Welcome to our community kitchen! Here, food lovers like you can share their favorite homemade recipes with everyone.
+      <p className="text-center text-lg text-slate-800 mb-8">
+        Welcome to our<span className="text-amber-400"> Community Kitchen!</span> <br /> Here, food lovers like you can share their favorite homemade recipes with everyone.
         Feel free to browse and get inspired. If you have a recipe you love, log in and share it with the world!
       </p>
 
       {user ? (
         <form onSubmit={handleAddRecipe} className="space-y-4 mb-10">
-          <h2 className="text-2xl font-semibold text-slate-700">Add Your Recipe</h2>
+          <h2 className="text-2xl font-semibold text-slate-800">Add Your Recipe</h2>
           <input
             type="text"
             placeholder="Recipe Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500"
           />
           <textarea
             placeholder="Ingredients"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
             rows={3}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500"
           />
           <textarea
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={5}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500"
           />
           <button
             type="submit"
-            className="bg-slate-900 text-white px-6 py-2 rounded-md hover:bg-slate-700 transition"
+            className="bg-slate-700 text-white px-6 py-2 rounded-md hover:bg-slate-600 transition"
           >
             Add Recipe
           </button>
         </form>
       ) : (
-        <p className="text-center text-slate-500 mb-10">Please log in to add your own recipe.</p>
+        <div className="flex items-center gap-4 justify-center mb-10">
+         <p className="text-slate-800 m-0">Please login to add your own recipe.</p>
+          <Link to="/login" className="text-amber-300 hover:underline font-semibold">
+            Go to Login
+          </Link>
+        </div>
+
+
       )}
 
       <div>
-        <h2 className="text-2xl font-semibold mb-4 text-slate-700">🍲 Shared Recipes</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-slate-800">🍲 Shared Recipes</h2>
         {recipes.length === 0 ? (
-          <p className="text-slate-500">No recipes shared yet. Be the first to contribute!</p>
+          <p className="text-slate-800">No recipes shared yet. Be the first to contribute!</p>
         ) : (
           <div className="space-y-6">
             {recipes.map((recipe) => (
@@ -126,7 +134,7 @@ const CommunityRecipes = () => {
                 {user && user.uid === recipe.userId && (
                   <button
                     onClick={() => handleDelete(recipe.id)}
-                    className="mt-3 text-red-500 hover:underline text-sm"
+                    className="mt-3 text-slate-900 hover:underline text-sm"
                   >
                     Delete
                   </button>

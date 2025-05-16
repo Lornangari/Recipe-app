@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import EditProfile from './pages/EditProfile';
 import CommunityRecipes from './pages/CommunityRecipes';
+import About from './pages/About';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/edit-profile" element={<EditProfile />} />

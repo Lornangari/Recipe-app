@@ -36,9 +36,9 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 text-slate-800" >
       <h2 className="text-2xl font-bold mb-2">Your Wishlist</h2>
-      <p className="mb-4 text-gray-600"> Your Total items: {wishlist.length}</p>
+      <p className="mb-4 text-slate-800"> Your Total items: {wishlist.length}</p>
 
       {wishlist.length === 0 ? (
         <p>No items in wishlist.</p>
@@ -52,7 +52,7 @@ const Wishlist = () => {
               </Link>
               <button
                 onClick={() => handleRemove(recipe.idMeal)}
-                className="mt-2 px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+                className="mt-2 px-4 py-1 bg-slate-700 text-white rounded hover:bg-slate-600"
               >
                 Remove
               </button>

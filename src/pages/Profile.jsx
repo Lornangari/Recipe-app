@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // ✅ added Link
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -54,12 +54,22 @@ const Profile = () => {
           >
             Edit Profile
           </button>
+
+          
           <button
             onClick={handleLogout}
-            className="block w-full bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-600"
+            className="block w-full bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-700"
           >
             Logout
           </button>
+
+          <Link
+            to="/"
+            className=" text-center w-full  text-slate-800 px-4 py-2 rounded hover:underline"
+          >
+            Go to Home
+          </Link>
+
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const Footer = () => {
         
         {/* Brand Info */}
         <div>
-          <h2 className="text-2xl font-bold text-amber-300 mb-2">RecipeApp 🍳</h2>
+          <h2 className="text-2xl font-bold text-amber-300 mb-2">Asili Recipes</h2>
           <p>Your go-to place for delicious and healthy recipes.</p>
         </div>
 
@@ -17,6 +17,8 @@ const Footer = () => {
           <ul className="space-y-1">
             <li><Link to="/" className="hover:text-amber-300 transition">Home</Link></li>
             <li><Link to="/recipes" className="hover:text-amber-300 transition">Recipes</Link></li>
+            <li><Link to="/community" className="hover:text-amber-300 transition">CommunityRecipes</Link></li>
+            <li><Link to="/about" className="hover:text-amber-300 transition">About us</Link></li>
             <li><Link to="/wishlist" className="hover:text-amber-300 transition">Wishlist</Link></li>
             <li><Link to="/profile" className="hover:text-amber-300 transition">Profile</Link></li>
           </ul>
@@ -24,7 +26,7 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div>
-          <h3 className="font-semibold text-amber-400 mb-2">Contact</h3>
+          <h3 className="font-semibold text-amber-300 mb-2">Contact</h3>
           <ul className="space-y-1 text-sm">
             <li>Email: support@recipeapp.com</li>
             <li>Phone: +123 456 7890</li>

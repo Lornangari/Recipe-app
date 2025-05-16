@@ -34,7 +34,7 @@ export default function Signup() {
 
   return (
     <div className="p-6 max-w-sm mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
+      <h2 className="text-2xl font-bold mb-4 text-slate-800">Sign Up</h2>
       <form onSubmit={handleSignup} className="flex flex-col gap-4">
         <input
           className="border p-2 rounded"
@@ -69,7 +69,7 @@ export default function Signup() {
           required
         />
         <button
-          className="bg-green-600 text-white p-2 rounded hover:bg-green-700"
+          className="bg-slate-700 text-white p-2 rounded hover:bg-slate-600"
           type="submit"
         >
           Sign Up
@@ -78,7 +78,7 @@ export default function Signup() {
 
       <p className="mt-4 text-center">
         Already have an account?{' '}
-        <Link to="/login" className="text-green-600 hover:underline">
+        <Link to="/login" className="text-slate-800 hover:underline">
           Login
         </Link>
       </p>

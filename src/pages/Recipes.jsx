@@ -96,7 +96,7 @@ const Recipes = () => {
   };
 
   return (
-    <div className="p-6 ">
+    <div className="p-6 text-slate-800 ">
       {/* Search Bar */}
       <form onSubmit={handleSearch} className="flex justify-center mb-4">
         <input
@@ -131,7 +131,7 @@ const Recipes = () => {
 
       {/* Recipe List */}
       {recipes.length === 0 ? (
-        <p className="text-center text-gray-500">No recipes found.</p>
+        <p className="text-center text-slate-800">No recipes found.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {recipes.map((recipe) => (
@@ -143,13 +143,13 @@ const Recipes = () => {
                   className="w-full h-48 object-cover rounded"
                 />
                 <h3 className="mt-2 font-bold truncate">{recipe.strMeal}</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-slate-800">
                   {recipe.strArea} | {recipe.strCategory}
                 </p>
               </Link>
               <button
                 onClick={() => handleAddToWishlist(recipe)}
-                className="mt-2 px-4 py-1 bg-slate-900 text-white rounded hover:bg-green-500"
+                className="mt-2 px-4 py-1 bg-slate-700 text-white rounded hover:bg-slate-600"
               >
                 Add to Wishlist
               </button>
