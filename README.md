@@ -1,7 +1,7 @@
 
 # Recipe App
 
-A modern and responsive Recipe App built using ReactJS, HTML, CSS, and JavaScript. This app allows users to browse, search, and view recipes with detailed instructions and ingredients.
+The Recipe App allows users to discover new recipes, save their favorites, and share community recipes. It combines API-fetched recipes with community-contributed ones stored in Firestore, making it both resourceful and interactive.  
 
 
 ##  Features
@@ -10,7 +10,6 @@ A modern and responsive Recipe App built using ReactJS, HTML, CSS, and JavaScrip
 -  Search functionality for recipes by name or ingredient
 -  Detailed recipe view with ingredients, instructions, and image
 -  Save to Favorites using `firestore`
--  Light and Dark mode toggle
 -  Responsive design for mobile and desktop
 -  Fetching data from a public recipe API
 
@@ -30,14 +29,11 @@ recipe-app/
 ├── package.json
 └── README.md
 
-##  Technologies Used
+##  Tech Stack
 
-- ReactJS (with React Router)
-- HTML5 & CSS
-- JavaScript
-- Tailwind CSS 
-- firebase for state persistence
-- Fetch API / Axios
+- Frontend: React, Tailwind CSS  
+- Backend/Database: Firebase (Auth & Firestore)  
+- API: External Recipe API 
 
 ## How to Run the Project
 
